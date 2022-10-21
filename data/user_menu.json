@@ -1,0 +1,64 @@
+[
+    {
+      "id": "1",
+      "name": "Home",
+      "link": "/",
+      "title": "API: Home",
+      "icon": "fa-tachometer-alt",
+      "submenus": []
+    },
+    {
+      "id": "2",
+      "name": "Vaccination Support",
+      "link": "#",
+      "title": "API: Vaccination Support",
+      "icon": "user",
+      "submenus": [
+        {
+          "name": "Search Applicant",
+          "link": "\/VaccinationSupport\/search_applicant",
+          "title": "API: Vaccination Support",
+          "icon": null
+        },
+        {
+          "name": "Get Applicant",
+          "link": "\/VaccinationSupport\/get_applicant",
+          "title": "API: Get Applicant",
+          "icon": null
+        },
+        {
+          "name": "Post Dosage",
+          "link": "\/VaccinationSupport\/post_dosage",
+          "title": "API: Post Dosage",
+          "icon": null
+        },
+        {
+          "name": "Fix Applicant",
+          "link": "\/VaccinationSupport\/fix_applicant",
+          "title": "API: Fix Applicant",
+          "icon": null
+        },
+        {
+          "name": "Generate Vaccination Number",
+          "link": "\/VaccinationSupport\/generate_vaccination_number",
+          "title": "API: Generate Vaccination Number",
+          "icon": null
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "name": "Sand Support",
+      "link": "#",
+      "title": "API: Sand Support",
+      "icon": "user",
+      "submenus": [
+        {
+          "name": "Search Vehicle",
+          "link": "\/SandSupport\/search_vehicle",
+          "title": "API: Sand Support",
+          "icon": null
+        }
+      ]
+    }
+  ]

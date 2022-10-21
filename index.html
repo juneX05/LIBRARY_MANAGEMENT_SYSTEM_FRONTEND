@@ -35,42 +35,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <div id="app"></div>
 
-     <script>
-
-    const options = {
-      moduleCache: {
-        vue: Vue
-      },
-      async getFile(url) {
-        
-        const res = await fetch(url);
-        if ( !res.ok )
-          throw Object.assign(new Error(res.statusText + ' ' + url), { res });
-        return {
-          getContentData: asBinary => asBinary ? res.arrayBuffer() : res.text(),
-        }
-      },
-      addStyle(textContent) {
-
-        const style = Object.assign(document.createElement('style'), { textContent });
-        const ref = document.head.getElementsByTagName('style')[0] || null;
-        document.head.insertBefore(style, ref);
-      },
-    }
-
-    const { loadModule } = window['vue3-sfc-loader'];
-
-    const app = Vue.createApp({
-      components: {
-        'my-component': Vue.defineAsyncComponent( () => loadModule('./myComponent.vue', options) )
-      },
-      template: '<my-component></my-component>'
-    });
-
-    app.mount('#app');
-
-  </script>
-
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">
         <!-- Control sidebar content goes here -->
@@ -81,13 +45,50 @@ scratch. This page gets rid of all links and provides the needed markup only.
     </aside>
     <!-- /.control-sidebar -->
 
-    <?php //require_once 'footer.php'; ?>
-
 </div>
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
 
+<script>
+const API_URL = "https://junex05-library-management-system-97vv9qx5wp9cgjp-8000.preview.app.github.dev"
+const OPTIONS = {
+  moduleCache: {
+    vue: Vue
+  },
+  async getFile(url) {
+    
+    const res = await fetch(url);
+    if ( !res.ok )
+      throw Object.assign(new Error(res.statusText + ' ' + url), { res });
+    return {
+      getContentData: asBinary => asBinary ? res.arrayBuffer() : res.text(),
+    }
+  },
+  addStyle(textContent) {
+
+    const style = Object.assign(document.createElement('style'), { textContent });
+    const ref = document.head.getElementsByTagName('style')[0] || null;
+    document.head.insertBefore(style, ref);
+  },
+}
+
+const { loadModule } = window['vue3-sfc-loader'];
+
+const app = Vue.createApp({
+  components: {
+    'my-component': Vue.defineAsyncComponent( () => loadModule('./views/Layout.vue', OPTIONS) )
+  },
+  template: '<my-component></my-component>'
+});
+
+function loadPage(url) {
+  return Vue.markRaw(Vue.defineAsyncComponent( () => loadModule('./views/' + url + '.vue', OPTIONS) ))
+}
+
+app.mount(document.body);
+
+</script>
 
 </body>
 </html>
