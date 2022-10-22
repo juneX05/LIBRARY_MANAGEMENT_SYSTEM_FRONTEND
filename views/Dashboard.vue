@@ -138,6 +138,10 @@ export default {
   },
   mounted() {
     this.getUserMenus()
+    
+    this.$nextTick(function () {
+      $('[data-widget="treeview"]').Treeview('init')
+    })
   },
   methods: {
     getUserMenus() {
@@ -145,7 +149,7 @@ export default {
         url: '/data/user_menu.json',
       }).then(response => {
         console.log(response);
-        this.menus = response.data;
+        this.menus = response;
       })
     },
   }
